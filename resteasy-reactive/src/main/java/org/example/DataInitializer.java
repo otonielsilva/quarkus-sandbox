@@ -25,10 +25,10 @@ public class DataInitializer {
         Post first = Post.of("Hello Quarkus", "My first post of Quarkus");
         Post second = Post.of("Hello Again, Quarkus", "My second post of Quarkus");
 
-        this.posts.deleteAll()
-                .onItem().invoke(l -> LOGGER.log(Level.INFO, "deleted {0} posts.", new Object[]{l}))
-                .flatMap(d -> this.posts.persist(List.of(first, second)))
-                .flatMap(v -> this.posts.findAll().list())
+      //  this.posts.deleteAll()
+      //          .onItem().invoke(l -> LOGGER.log(Level.INFO, "deleted {0} posts.", new Object[]{l}))
+      //          .flatMap(d -> this.posts.persist(List.of(first, second)))
+        this.posts.findAll().list()
                 .subscribe()
                 .with(
                         rows -> rows.forEach(r -> LOGGER.log(Level.INFO, "data:{0}", r)),
